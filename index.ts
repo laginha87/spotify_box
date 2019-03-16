@@ -1,5 +1,3 @@
-const dir = '/Users/filipecorreia/Dropbox/explosions.png';
-
 const jsQR = require("jsqr");
 
 const image = require('get-image-data')
@@ -7,26 +5,28 @@ const image = require('get-image-data')
 const PiCamera = require('pi-camera');
 
 
+const snapPath = `${ __dirname }/test.jpg`;
 console.log("Setting up camera")
 
+
 const myCamera = new PiCamera({
-  mode: 'video',
-  output: `${ __dirname }/video.h264`,
-  width: 1920,
-  height: 1080,
-  timeout: 5000, // Record for 5 seconds
-  nopreview: true,
+    mode: 'photo',
+    output: snapPath,
+    width: 640,
+    height: 480,
+    nopreview: true,
 });
 
 console.log("Starting Recording")
 
-myCamera.record()
+const rec = myCamera.record()
   .then((result) => {
     // Your video was captured
-    console.log(result)
+    console.log("Success")
   })
   .catch((error) => {
      // Handle your error
+     console.log("Not really")
   });
 
 
@@ -39,6 +39,8 @@ myCamera.record()
 
 // });
 
-while(true){
-
-}
+( async () => {
+    while(true){
+        await rec
+    }
+})()
