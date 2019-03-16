@@ -20,9 +20,7 @@ console.log("Setting up camera")
 
 
 const streamCamera = new StreamCamera({
-    codec: Codec.MJPEG,
-    width: 480,
-    height: 480,
+    codec: Codec.MJPEG
 });
 
 var spotifyApi = new SpotifyWebApi({
@@ -54,7 +52,7 @@ spotifyApi.setRefreshToken(process.env.REFRESH_TOKEN);
         const imageData = await streamCamera.takeImage();
 
         const rawImageData = jpeg.decode(imageData, true);
-        const qr = jsQR(rawImageData.data, 480, 480);
+        const qr = jsQR(rawImageData.data, rawImageData.width, rawImageData.height);
         if(qr !== null) {
             await spotifyApi.play({context_uri: qr.data});
         }
