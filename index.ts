@@ -19,7 +19,7 @@ const myCamera = new PiCamera({
 
 console.log("Starting Recording")
 
-const rec = myCamera.record()
+const rec = myCamera.snap()
   .then((result) => {
     // Your video was captured
     console.log("Success")
