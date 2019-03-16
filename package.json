@@ -12,6 +12,7 @@
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "get-image-data": "michaelrhodes/get-image-data",
+    "jpeg-js": "^0.3.4",
     "jsqr": "^1.2.0",
     "pi-camera": "^1.2.1",
     "pi-camera-connect": "^0.2.0",

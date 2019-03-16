@@ -2,6 +2,8 @@
 const jsQR = require("jsqr");
 const promisify = require("promisify-node");
 const SpotifyWebApi = require('spotify-web-api-node');
+const jpeg = require('jpeg-js');
+
 
 const {StreamCamera, Codec} = require("pi-camera-connect");
 
@@ -51,7 +53,8 @@ spotifyApi.setRefreshToken(process.env.REFRESH_TOKEN);
 
         const imageData = await streamCamera.takeImage();
 
-        const qr = jsQR(imageData, 480, 480);
+        const rawImageData = jpeg.decode(imageData, true);
+        const qr = jsQR(rawImageData.data, 480, 480);
         if(qr !== null) {
             await spotifyApi.play({context_uri: qr.data});
         }
