@@ -61,6 +61,7 @@ spotifyApi.setRefreshToken(process.env.REFRESH_TOKEN);
             console.log("Found data")
             console.log(qr.data)
             await spotifyApi.play({context_uri: qr.data});
+            await sleep(5000);
         }
         console.log("Stopping")
         // await streamCamera.stopCapture();
