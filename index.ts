@@ -1,9 +1,10 @@
-const jsQR = require("jsqr");
-
-const image = require('get-image-data')
-
 const PiCamera = require('pi-camera');
+const jsQR = require("jsqr");
+const promisify = require("promisify-node");
 
+const util = require('util');
+const sleep = util.promisify(setTimeout);
+const image = util.promisify(require('get-image-data'))
 
 const snapPath = `${ __dirname }/test.jpg`;
 console.log("Setting up camera")
@@ -21,17 +22,13 @@ const myCamera = new PiCamera({
 
 ( async () => {
     while(true){
+        console.log("Round")
         const rec = myCamera.snap()
         await rec
 
-        const end = new Promise((resolve ) => {
-            image(snapPath, function (err, info) {
-                const qr = jsQR(info.data, info.width, info.height)
-                console.log(qr.data)
-                resolve()
-            })
-
-        });
-        await end
+        const imageData = await image(snapPath);
+        const qr = jsQR(imageData.data, imageData.width, imageData.height)
+        console.log(qr.data)
+        await sleep(1000);
     }
 })()
