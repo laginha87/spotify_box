@@ -29,7 +29,9 @@ const myCamera = new PiCamera({
         const imageData = await image(snapPath);
         console.log(imageData)
         const qr = jsQR(imageData.data, imageData.width, imageData.height)
-        console.log(qr.data)
+        if(qr !== null) {
+            console.log(qr.data)
+        }
         await sleep(1000);
     }
 })()
