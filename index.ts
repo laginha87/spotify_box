@@ -48,18 +48,21 @@ spotifyApi.setRefreshToken(process.env.REFRESH_TOKEN);
 
     while(true){
         console.log("Round")
-
+        console.log("Opening Camera")
         await streamCamera.startCapture();
-
+        console.log("Taking image")
         const imageData = await streamCamera.takeImage();
-
+        console.log("Decoding")
         const rawImageData = jpeg.decode(imageData, true);
+        console.log("starting qr code analysis")
         const qr = jsQR(rawImageData.data, rawImageData.width, rawImageData.height);
+        console.log("Done")
         if(qr !== null) {
             console.log("Found data")
             console.log(qr.data)
             await spotifyApi.play({context_uri: qr.data});
         }
+        console.log("Stopping")
         await streamCamera.stopCapture();
         await sleep(30);
     }
