@@ -45,11 +45,11 @@ spotifyApi.setRefreshToken(process.env.REFRESH_TOKEN);
     } catch(error)  {
         console.log(error)
     }
-
+    await streamCamera.startCapture();
     while(true){
         console.log("Round")
         console.log("Opening Camera")
-        await streamCamera.startCapture();
+
         console.log("Taking image")
         const imageData = await streamCamera.takeImage();
         console.log("Decoding")
@@ -63,7 +63,7 @@ spotifyApi.setRefreshToken(process.env.REFRESH_TOKEN);
             await spotifyApi.play({context_uri: qr.data});
         }
         console.log("Stopping")
-        await streamCamera.stopCapture();
+        // await streamCamera.stopCapture();
         await sleep(30);
     }
 })()
