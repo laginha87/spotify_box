@@ -19,6 +19,7 @@
     "typescript": "^3.3.3333"
   },
   "scripts": {
-    "start": "babel-node --inspect --extensions \".ts\" index.ts"
+    "debug": "babel-node --inspect --extensions \".ts\" index.ts",
+    "start": "babel-node --extensions \".ts\" index.ts"
   }
 }
