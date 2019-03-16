@@ -17,30 +17,21 @@ const myCamera = new PiCamera({
     nopreview: true,
 });
 
-console.log("Starting Recording")
 
-const rec = myCamera.snap()
-  .then((result) => {
-    // Your video was captured
-    console.log("Success")
-  })
-  .catch((error) => {
-     // Handle your error
-     console.log("Not really")
-  });
-
-
-// const end = new Promise((resolve ) => {
-//     image(dir, function (err, info) {
-//         const cenas = jsQR(info.data, info.width, info.height)
-//         console.log(cenas.data)
-//         resolve()
-//     })
-
-// });
 
 ( async () => {
     while(true){
+        const rec = myCamera.snap()
         await rec
+
+        const end = new Promise((resolve ) => {
+            image(snapPath, function (err, info) {
+                const qr = jsQR(info.data, info.width, info.height)
+                console.log(qr.data)
+                resolve()
+            })
+
+        });
+        await end
     }
 })()
