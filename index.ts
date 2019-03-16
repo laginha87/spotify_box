@@ -20,7 +20,9 @@ console.log("Setting up camera")
 
 
 const streamCamera = new StreamCamera({
-    codec: Codec.MJPEG
+    codec: Codec.MJPEG,
+    width: 600,
+    height: 800
 });
 
 var spotifyApi = new SpotifyWebApi({
@@ -54,9 +56,11 @@ spotifyApi.setRefreshToken(process.env.REFRESH_TOKEN);
         const rawImageData = jpeg.decode(imageData, true);
         const qr = jsQR(rawImageData.data, rawImageData.width, rawImageData.height);
         if(qr !== null) {
+            console.log("Found data")
+            console.log(qr.data)
             await spotifyApi.play({context_uri: qr.data});
         }
         await streamCamera.stopCapture();
-        await sleep(10);
+        await sleep(30);
     }
 })()
