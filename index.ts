@@ -5,6 +5,10 @@ const jsQR = require("jsqr");
 const image = require('get-image-data')
 
 const PiCamera = require('pi-camera');
+
+
+console.log("Setting up camera")
+
 const myCamera = new PiCamera({
   mode: 'video',
   output: `${ __dirname }/video.h264`,
@@ -13,6 +17,8 @@ const myCamera = new PiCamera({
   timeout: 5000, // Record for 5 seconds
   nopreview: true,
 });
+
+console.log("Starting Recording")
 
 myCamera.record()
   .then((result) => {
