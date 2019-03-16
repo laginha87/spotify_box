@@ -1255,6 +1255,11 @@ phin@^2.9.1:
   resolved "https://registry.yarnpkg.com/phin/-/phin-2.9.3.tgz#f9b6ac10a035636fb65dfc576aaaa17b8743125c"
   integrity sha512-CzFr90qM24ju5f88quFC/6qohjC144rehe5n6DH900lgXmUe86+xCKc10ev56gRKC4/BkHUoG4uSiQgBiIXwDA==
 
+pi-camera-connect@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/pi-camera-connect/-/pi-camera-connect-0.2.0.tgz#251d77e6ed497b87e2c9f315d43cadccf68d859a"
+  integrity sha512-ApPmTDNn/PAfAtkW3p+7NWONMesmoDa6aIZ4pAXYYjpaRbPWusPjREgLcyzEn7HJFGtq39I0JuZTC8OYa19bWQ==
+
 pi-camera@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/pi-camera/-/pi-camera-1.2.1.tgz#4d134510e351f4f6a98a157f452cbb693348a6df"

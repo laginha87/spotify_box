@@ -1,27 +1,27 @@
-const PiCamera = require('pi-camera');
+
 const jsQR = require("jsqr");
 const promisify = require("promisify-node");
 const SpotifyWebApi = require('spotify-web-api-node');
+
+const {StreamCamera, Codec} = require("pi-camera-connect");
+
+
 
 require('dotenv').config()
 
 
 const util = require('util');
 const sleep = util.promisify(setTimeout);
-const image = promisify(require('get-image-data'))
 
 const snapPath = `${ __dirname }/test.jpg`;
 console.log("Setting up camera")
 
 
-const myCamera = new PiCamera({
-    mode: 'photo',
-    output: snapPath,
-    width: 640,
+const streamCamera = new StreamCamera({
+    codec: Codec.MJPEG,
+    width: 480,
     height: 480,
-    nopreview: true,
 });
-
 
 var spotifyApi = new SpotifyWebApi({
     clientId: process.env.CLIENT_ID,
@@ -46,11 +46,12 @@ spotifyApi.setRefreshToken(process.env.REFRESH_TOKEN);
 
     while(true){
         console.log("Round")
-        const rec = myCamera.snap()
-        await rec
 
-        const imageData = await image(snapPath);
-        const qr = jsQR(imageData.data, imageData.width, imageData.height)
+        await streamCamera.startCapture();
+
+        const imageData = await streamCamera.takeImage();
+
+        const qr = jsQR(imageData, 480, 480);
         if(qr !== null) {
             await spotifyApi.play({context_uri: qr.data});
         }
