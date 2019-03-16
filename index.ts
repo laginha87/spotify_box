@@ -58,6 +58,7 @@ spotifyApi.setRefreshToken(process.env.REFRESH_TOKEN);
         if(qr !== null) {
             await spotifyApi.play({context_uri: qr.data});
         }
+        await streamCamera.stopCapture();
         await sleep(10);
     }
 })()
