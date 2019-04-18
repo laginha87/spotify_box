@@ -25,7 +25,17 @@ export class Spotify {
 
     play(arg) {
         this.refreshToken()
-        this.api.play(arg)
+        return this.api.play(arg)
+    }
+
+    next() {
+        this.refreshToken()
+        return this.api.skipToNext()
+    }
+
+    back(){
+        this.refreshToken()
+        return this.api.skipToPrevious()
     }
 
 
