@@ -14,6 +14,7 @@ import { Spotify } from "./src/spotify";
     mpr121.on('release', (pin) => console.log(`pin ${pin} released`));
     mpr121.on(10, (state) => console.log(`pin 10 is ${state ? 'touched' : 'released'}`));
     mpr121.on(10, (state) => console.log(`pin 0 is ${state ? 'touched' : 'released'}`));
+    mpr121.on('error', (e) => console.log(e))
     console.log("Starting the loop")
     while(true) {
 
