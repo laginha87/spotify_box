@@ -18,7 +18,9 @@ import { Spotify } from "./src/spotify";
     console.log("Starting the loop")
     let i = 0
     while(true) {
-        i++
+        (() => {
+
+        })()
     }
     // const res = await HiFi.turnOff()
     // client = new Spotify()
