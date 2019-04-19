@@ -11,7 +11,7 @@ export class Controller {
         this.mpr121 = new MPR121(0x5A, 1);
 
         Object.keys(map).forEach((k) => {
-            this.mpr121.on(k, 'touch', (state : boolean) => { if (state) { map[k]() } })
+            this.mpr121.on(k, (state : boolean) => { if (state) { map[k]() } })
         })
     }
 
