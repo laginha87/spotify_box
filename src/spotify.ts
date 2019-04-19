@@ -28,6 +28,11 @@ export class Spotify {
         return this.api.play(arg)
     }
 
+    toggle() {
+        this.refreshToken()
+        return this.api.getMyCurrentPlaybackState()
+    }
+
     next() {
         this.refreshToken()
         return this.api.skipToNext()
