@@ -19,7 +19,7 @@ import { Spotify } from "./src/spotify";
     let i = 0
     while(true) {
         (() => {
-
+            console.log(mpr121)
         })()
     }
     // const res = await HiFi.turnOff()
