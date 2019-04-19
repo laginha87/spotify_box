@@ -16,8 +16,9 @@ import { Spotify } from "./src/spotify";
     mpr121.on(10, (state) => console.log(`pin 0 is ${state ? 'touched' : 'released'}`));
     mpr121.on('error', (e) => console.log(e))
     console.log("Starting the loop")
+    let i = 0
     while(true) {
-
+        i++
     }
     // const res = await HiFi.turnOff()
     // client = new Spotify()
