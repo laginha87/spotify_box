@@ -7,6 +7,15 @@
         {
             "type": "node",
             "request": "attach",
+            "name": "Attach to Remote",
+            "address": "192.168.1.5",
+            "port": 9229,
+            "localRoot": "${workspaceFolder}",
+            "remoteRoot": "/home/pi/Documents/code/spotify_box"
+        },
+        {
+            "type": "node",
+            "request": "attach",
             "name": "Attach",
             "port": 9229,
 

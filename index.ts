@@ -1,7 +1,7 @@
 
 
-require('dotenv').config()
-const MPR121 = require('adafruit-mpr121')
+require('dotenv').config();
+const MPR121 = require('adafruit-mpr121');
 import HiFi from "./src/hifi";
 import { cameraCycle } from "./src/cameraCycle";
 import { Spotify } from "./src/spotify";
