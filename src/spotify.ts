@@ -23,23 +23,24 @@ export class Spotify {
         }
     }
 
-    play(arg) {
-        this.refreshToken()
+    async play(arg=null) {
+        await this.refreshToken()
         return this.api.play(arg)
     }
 
-    toggle() {
-        this.refreshToken()
-        return this.api.getMyCurrentPlaybackState()
+    async toggle() {
+        await this.refreshToken()
+        const { body: { is_playing } } = await this.api.getMyCurrentPlaybackState()
+        return is_playing ? this.api.pause() : this.api.play()
     }
 
-    next() {
-        this.refreshToken()
+    async next() {
+        await this.refreshToken()
         return this.api.skipToNext()
     }
 
-    back(){
-        this.refreshToken()
+    async back(){
+        await this.refreshToken()
         return this.api.skipToPrevious()
     }
 

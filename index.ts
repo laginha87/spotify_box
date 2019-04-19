@@ -13,10 +13,9 @@ import { Controller } from "./src/controller" ;
     const client = new Spotify()
     const camera =  new CameraCycle(client)
     const controller = new Controller({
-        0: async () => {
-            const a =  await client.toggle()
-            console.log(a)
-        }
+        0: client.back,
+        1: client.toggle,
+        2: client.next
     })
 
     await camera.init()
