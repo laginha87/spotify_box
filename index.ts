@@ -18,11 +18,11 @@ import { Controller } from "./src/controller" ;
         2: client.next.bind(client),
     })
 
-    await camera.init()
+    // await camera.init()
 
     while(true) {
         await controller.check()
-        await camera.check()
+        // await camera.check()
     }
 
 })()
