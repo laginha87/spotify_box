@@ -24,6 +24,8 @@
   },
   "scripts": {
     "debug": "babel-node --inspect=0.0.0.0 --extensions \".ts\" index.ts",
-    "start": "babel-node --extensions \".ts\" index.ts"
+    "start": "babel-node --extensions \".ts\" index.ts",
+    "start-camera": "babel-node --extensions \".ts\" bin/camera.ts",
+    "start-controller": "babel-node --extensions \".ts\" bin/controller.ts",
   }
 }

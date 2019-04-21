@@ -11,7 +11,7 @@ import { Controller } from "./src/controller" ;
     // const res = await HiFi.turnOff()
 
     const client = new Spotify()
-    const camera =  new CameraCycle(client)
+    // const camera =  new CameraCycle(client)
     const controller = new Controller({
         0: client.back.bind(client),
         1: client.toggle.bind(client),
