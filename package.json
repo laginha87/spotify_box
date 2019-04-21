@@ -20,12 +20,13 @@
     "pi-camera": "^1.2.1",
     "pi-camera-connect": "^0.2.0",
     "spotify-web-api-node": "^4.0.0",
-    "typescript": "^3.3.3333"
+    "typescript": "^3.3.3333",
+    "yarn-run-all": "^3.1.1"
   },
   "scripts": {
     "debug": "babel-node --inspect=0.0.0.0 --extensions \".ts\" index.ts",
-    "start": "babel-node --extensions \".ts\" index.ts",
-    "start-camera": "babel-node --extensions \".ts\" bin/camera.ts",
-    "start-controller": "babel-node --extensions \".ts\" bin/controller.ts"
+    "start": "npm-run-all --parallel start:*",
+    "start:camera": "babel-node --extensions \".ts\" bin/camera.ts",
+    "start:controller": "babel-node --extensions \".ts\" bin/controller.ts"
   }
 }
