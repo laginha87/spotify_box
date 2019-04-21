@@ -13,6 +13,7 @@ export class Controller {
         Object.keys(map).forEach((k) => {
             this.mpr121.on(k, async (state : boolean) => { if (state) { await map[k]() } })
         })
+        this.mpr121.on('touch', (pin) => console.log(`touched ${pin}`))
     }
 
     async check() {
