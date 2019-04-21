@@ -12,9 +12,9 @@ import { Controller } from "../src/controller" ;
         2: client.next.bind(client),
     })
 
+    await controller.check()
 
     while(true) {
-        await controller.check()
     }
 
 })()
