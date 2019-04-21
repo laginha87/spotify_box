@@ -31,6 +31,8 @@ export class CameraCycle {
         if (qr !== null) {
             await this.spotifyClient.play({ context_uri: qr.data });
             await sleep(5000);
+        } else {
+            await sleep(100);
         }
     }
 }
